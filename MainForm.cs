@@ -1,22 +1,22 @@
 using Autodesk.Revit.ApplicationServices;
+using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Structure;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
-using Autodesk.Revit.DB.Architecture;
-using Autodesk.Revit.DB.Structure;
 
-using System.Text;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Net.Mail;
+using System.Text;
 using System.Windows.Forms;
 // WinForms 와 Revit API 에 같은 이름이 있는 클래스는 어느 쪽을 쓸지 지정합니다.
 using TaskDialog = Autodesk.Revit.UI.TaskDialog;
-using System.Linq;
 
 namespace Modless
 {
@@ -139,6 +139,9 @@ namespace Modless
         /// 핸들러 이름. (IExternalEventHandler)
         /// Revit 이 내부적으로 이벤트를 구분할 때 사용합니다. 아무 이름이나 괜찮습니다.
         /// </summary>
+
+
+
         public string GetName()
         {
             return "Modless";
@@ -150,5 +153,136 @@ namespace Modless
             _exEvent.Dispose();
             base.OnFormClosed(e);
         }
+
+
+        //버튼 클릭으로 바닥 생성
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RunRevit((uidoc, doc) =>
+            {
+                XYZ p1 = new XYZ(0, 0, 0) / 304.8;
+                XYZ p2 = new XYZ(3000, 0, 0) / 304.8;
+                XYZ p3 = new XYZ(3000, 3000, 0) / 304.8;
+                XYZ p4 = new XYZ(0, 3000, 0) / 304.8;
+
+                List<XYZ> points = new List<XYZ>();
+                points.Add(p1);
+                points.Add(p2);
+                points.Add(p3);
+                points.Add(p4);
+
+                CurveLoop loop = new CurveLoop();
+                for (int i = 0; i < points.Count; i++)
+                {
+                    if (i < points.Count - 1)
+                    {
+                        // 다음 점과 연결 (p1→p2, p2→p3, p3→p4)
+                        Line line = Line.CreateBound(points[i], points[i + 1]);
+                        loop.Append(line);
+                    }
+                    else
+                    {
+                        // 마지막 점은 첫 점과 연결 (p4→p1)
+                        Line line = Line.CreateBound(points[i], points[0]);
+                        loop.Append(line);
+                    }
+                }
+
+                // 바닥타입과 레벨
+                FilteredElementCollector col = new FilteredElementCollector(doc);
+                col.OfCategory(BuiltInCategory.OST_Floors);
+                col.OfClass(typeof(FloorType));
+                FloorType ft = col.FirstElement() as FloorType;
+                ElementId floorid = ft.Id;
+                Level lev = doc.ActiveView.GenLevel;
+                ElementId levelid = lev.Id;
+
+                List<CurveLoop> loops = new List<CurveLoop>();
+                loops.Add(loop);
+
+                //출력
+                using (Transaction trans = new Transaction(doc, "바닥 생성"))
+                {
+                    trans.Start();
+                    Floor f = Floor.Create(doc, loops, floorid, lev.Id);
+                    trans.Commit();
+                }
+            });
+        }
+
+
+
+
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        //버튼클릭으로 천장 생성
+        private void button4_Click(object sender, EventArgs e)
+        {
+            RunRevit((uidoc, doc) =>
+            {
+                XYZ p1 = new XYZ(0, 0, 0) / 304.8;
+                XYZ p2 = new XYZ(3000, 0, 0) / 304.8;
+                XYZ p3 = new XYZ(3000, 3000, 0) / 304.8;
+                XYZ p4 = new XYZ(0, 3000, 0) / 304.8;
+
+                List<XYZ> points = new List<XYZ>();
+                points.Add(p1);
+                points.Add(p2);
+                points.Add(p3);
+                points.Add(p4);
+
+                CurveLoop loop = new CurveLoop();
+                for (int i = 0; i < points.Count; i++)
+                {
+                    if (i < points.Count - 1)
+                    {
+                        // 다음 점과 연결 (p1→p2, p2→p3, p3→p4)
+                        Line line = Line.CreateBound(points[i], points[i + 1]);
+                        loop.Append(line);
+                    }
+                    else
+                    {
+                        // 마지막 점은 첫 점과 연결 (p4→p1)
+                        Line line = Line.CreateBound(points[i], points[0]);
+                        loop.Append(line);
+                    }
+                }
+
+                // 천장타입과 레벨
+                FilteredElementCollector col = new FilteredElementCollector(doc);
+                col.OfCategory(BuiltInCategory.OST_Ceilings);
+                col.OfClass(typeof(CeilingType));
+                CeilingType ct = col.FirstElement() as CeilingType;
+                ElementId ceilingid = ct.Id;
+                Level lev = doc.ActiveView.GenLevel;
+                ElementId levelid = lev.Id;
+
+                List<CurveLoop> loops = new List<CurveLoop>();
+                loops.Add(loop);
+
+                //출력
+                using (Transaction trans = new Transaction(doc, "천장 생성"))
+                {
+                    trans.Start();
+                    Ceiling c = Ceiling.Create(doc, loops, ceilingid, lev.Id);
+                    trans.Commit();
+                }
+            });
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+
+
+

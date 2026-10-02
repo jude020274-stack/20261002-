@@ -14,3 +14,20 @@ C:\Users\platu\OneDrive\Desktop\Modless\obj\Debug\net8.0-windows\Modless.pdb
 C:\Users\platu\OneDrive\Desktop\Modless\obj\Debug\net8.0-windows\ref\Modless.dll
 C:\Users\platu\OneDrive\Desktop\Modless\obj\Debug\net8.0-windows\Modless.csproj.Up2Date
 C:\Users\platu\OneDrive\Desktop\Modless\obj\Debug\net8.0-windows\Modless.Properties.Resources.resources
+C:\Users\jude5\OneDrive\바탕 화면\Modless\bin\Debug\net8.0-windows\Modless.deps.json
+C:\Users\jude5\OneDrive\바탕 화면\Modless\bin\Debug\net8.0-windows\Modless.dll
+C:\Users\jude5\OneDrive\바탕 화면\Modless\bin\Debug\net8.0-windows\Modless.pdb
+C:\Users\jude5\OneDrive\바탕 화면\Modless\obj\Debug\net8.0-windows\Modless.csproj.AssemblyReference.cache
+C:\Users\jude5\OneDrive\바탕 화면\Modless\obj\Debug\net8.0-windows\Modless.MainForm.resources
+C:\Users\jude5\OneDrive\바탕 화면\Modless\obj\Debug\net8.0-windows\Modless.Properties.Resources.resources
+C:\Users\jude5\OneDrive\바탕 화면\Modless\obj\Debug\net8.0-windows\Modless.csproj.GenerateResource.cache
+C:\Users\jude5\OneDrive\바탕 화면\Modless\obj\Debug\net8.0-windows\Modless.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jude5\OneDrive\바탕 화면\Modless\obj\Debug\net8.0-windows\Modless.AssemblyInfoInputs.cache
+C:\Users\jude5\OneDrive\바탕 화면\Modless\obj\Debug\net8.0-windows\Modless.AssemblyInfo.cs
+C:\Users\jude5\OneDrive\바탕 화면\Modless\obj\Debug\net8.0-windows\Modless.csproj.CoreCompileInputs.cache
+C:\Users\jude5\OneDrive\바탕 화면\Modless\obj\Debug\net8.0-windows\Modless.sourcelink.json
+C:\Users\jude5\OneDrive\바탕 화면\Modless\obj\Debug\net8.0-windows\Modless.dll
+C:\Users\jude5\OneDrive\바탕 화면\Modless\obj\Debug\net8.0-windows\refint\Modless.dll
+C:\Users\jude5\OneDrive\바탕 화면\Modless\obj\Debug\net8.0-windows\Modless.pdb
+C:\Users\jude5\OneDrive\바탕 화면\Modless\obj\Debug\net8.0-windows\ref\Modless.dll
+C:\Users\jude5\OneDrive\바탕 화면\Modless\obj\Debug\net8.0-windows\Modless.csproj.Up2Date

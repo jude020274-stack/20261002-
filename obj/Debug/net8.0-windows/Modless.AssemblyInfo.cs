@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Modless")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d13cbee7f5dc0c38ce4b4f383bb893f5fd32cf4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Modless")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Modless")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
